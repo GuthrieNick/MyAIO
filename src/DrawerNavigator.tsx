@@ -27,7 +27,7 @@ export default () => {
     return (
         <NavigationContainer>
             <Drawer.Navigator
-                initialRouteName={APPS.Home}
+                initialRouteName={APPS.Journal}
                 drawerContent={(props) => <CustomDrawerContent {...props} />}>
                 <Drawer.Screen
                     name={APPS.Home}

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, View, FlatList} from 'react-native';
 import {EntryView, EntryViewProps as EVProps} from '../components';
+import {FloatingAction} from 'react-native-floating-action';
 
 const mockData: EVProps[] = [
   {
@@ -23,16 +24,28 @@ const mockData: EVProps[] = [
   },
 ];
 
-const Separator = () => <View style={{borderBottomWidth: 1, borderBottomColor: 'gray', marginHorizontal: 20, marginVertical: 10}} />
+const Separator = () => (
+  <View
+    style={{
+      borderBottomWidth: 1,
+      borderBottomColor: 'gray',
+      marginHorizontal: 20,
+      marginVertical: 10,
+    }}
+  />
+);
 
 export default () => {
   return (
-    <View>
+    <View style={{flex: 1}}>
       <FlatList
         data={mockData}
         ItemSeparatorComponent={Separator}
-        renderItem={({item}) => <EntryView {...item}/>}
-        keyExtractor={(item, index) => index.toString()}
+        renderItem={({item}) => <EntryView {...item} />}
+        keyExtractor={(_item, index) => index.toString()}
+      />
+      <FloatingAction showBackground={false}
+        onPressMain={() => console.log("Editor")}
       />
     </View>
   );
