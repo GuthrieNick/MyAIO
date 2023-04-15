@@ -1,31 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import { getDateTimeString } from '../../utils';
 
 export type Props = {
   mood: string;
   saved: Date;
   description: string;
 };
-
-const monthNames = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
-
-const getDateString = (date: Date): string =>
-  `${
-    monthNames[date.getMonth()]
-  } ${date.getDay()}, ${date.toLocaleTimeString()}`;
 
 const b: React.FC<any> = ({children}) => (
   <Text style={{fontWeight: 'bold'}}>{children}</Text>
@@ -42,7 +23,7 @@ export default ({mood, saved, description}: Props) => (
   <View style={styles.outerView}>
     <View style={styles.topView}>
       <Section name={'Mood'} value={mood} />
-      <Section name={'Saved'} value={getDateString(saved)} />
+      <Section name={'Saved'} value={getDateTimeString(saved)} />
     </View>
     <View style={{margin: 10}} />
     <Text style={styles.text}>{description}</Text>

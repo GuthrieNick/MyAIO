@@ -4,9 +4,9 @@ import {EditorScreen, MainScreen} from './screens';
 
 const Stack = createNativeStackNavigator();
 
-export default () => {
-  <Stack.Navigator initialRouteName='Main'>
+export default () => (
+  <Stack.Navigator screenOptions={{headerShown: false}}>
     <Stack.Screen name="Main" component={MainScreen} />
     <Stack.Screen name="Editor" component={EditorScreen} />
-  </Stack.Navigator>;
-};
+  </Stack.Navigator>
+);

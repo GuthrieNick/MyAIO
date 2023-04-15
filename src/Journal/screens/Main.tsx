@@ -1,7 +1,9 @@
 import React from 'react';
-import {Text, View, FlatList} from 'react-native';
+import {Text, View, FlatList, StyleSheet} from 'react-native';
 import {EntryView, EntryViewProps as EVProps} from '../components';
 import {FloatingAction} from 'react-native-floating-action';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {EntryFolderOverride} from '../components/EntryFolder';
 
 const mockData: EVProps[] = [
   {
@@ -35,18 +37,36 @@ const Separator = () => (
   />
 );
 
-export default () => {
+export default ({navigation}: {navigation: any}) => {
   return (
     <View style={{flex: 1}}>
       <FlatList
         data={mockData}
         ItemSeparatorComponent={Separator}
+        ListHeaderComponent={() => <View style={{margin: 5}} />}
         renderItem={({item}) => <EntryView {...item} />}
         keyExtractor={(_item, index) => index.toString()}
       />
-      <FloatingAction showBackground={false}
-        onPressMain={() => console.log("Editor")}
+      <FlatList
+        data={[1, 2, 3, 4, 5, 6, 7]}
+        renderItem={({item}) => <EntryFolderOverride text={item.toString()} />}
+        keyExtractor={item => item.toString()}
       />
+      <TouchableOpacity onPress={() => console.log('press')}>
+        <View
+          style={{
+            width: 50,
+            height: 50,
+            position: 'absolute',
+            backgroundColor: 'black',
+            borderRadius: 50,
+            bottom: 200,
+            right: 20,
+            marginRight: 30,
+          }}>
+          <Text style={{fontSize: 30}}>+</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
