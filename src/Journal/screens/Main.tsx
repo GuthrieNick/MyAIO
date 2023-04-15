@@ -42,7 +42,7 @@ export default ({navigation}: {navigation: any}) => {
       ),
       ItemSeparatorComponent: FolderListSeparator,
       ListFooterComponent: () => (
-        <View style={{borderColor: 'gray', borderTopWidth: 1, borderBottomWidth: 1}}>
+        <View style={{borderColor: 'gray', borderTopWidth: 1, borderBottomWidth: 1, marginBottom: 5}}>
           <EntryFolderOverride
             text="View all"
             onPress={() => console.log('not implemented')}
@@ -62,7 +62,6 @@ export default ({navigation}: {navigation: any}) => {
   return (
     <SafeAreaView>
       <SectionList
-        style={{marginBottom: 50}}
         StickyHeaderComponent={() => null}
         stickyHeaderHiddenOnScroll={true}
         stickySectionHeadersEnabled={false}
