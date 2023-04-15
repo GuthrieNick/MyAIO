@@ -8,6 +8,9 @@ export default StyleSheet.create({
     borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
+    position: 'absolute',
+    bottom: 10,
+    right: 10
   },
 
   addButtonText: {fontSize: 30},

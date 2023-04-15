@@ -3,16 +3,7 @@ import {View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import {EntryListViewProps} from '../types';
 import EntryView from './EntryView';
-
-const Separator = () => (
-  <View
-    style={{
-      borderBottomWidth: 1,
-      borderBottomColor: 'gray',
-      marginHorizontal: 20,
-    }}
-  />
-);
+import Separator from './Separator';
 
 export default ({entries}: EntryListViewProps) => (
   <FlatList
