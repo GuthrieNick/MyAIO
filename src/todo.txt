@@ -1,1 +1,2 @@
 Implement ThemeProvider for consistent theme colors
+Add Editor and AsyncStorage to Journal

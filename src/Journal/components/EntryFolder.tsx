@@ -24,7 +24,3 @@ export const EntryFolderOverride = ({text, onPress}: {text: string; onPress: () 
     <MCIcon name="chevron-right" color="black" size={20} />
   </TouchableOpacity>
 );
-
-export const FolderListSeparator = () => (
-  <View style={styles.folderList} />
-);

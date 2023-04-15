@@ -14,7 +14,7 @@ export default StyleSheet.create({
   topView: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    //justifyContent: 'space-between',
     marginBottom: 10,
   },
 });

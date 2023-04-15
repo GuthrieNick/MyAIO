@@ -1,21 +1,33 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import { getDateTimeString } from '../../utils';
-import { EntryViewProps } from '../types';
-import { EntryViewStyles as styles } from '../styles';
+import {View, Text, StyleProp, ViewStyle} from 'react-native';
+import {getDateTimeString} from '../../utils';
+import {EntryViewProps} from '../types';
+import {EntryViewStyles as styles} from '../styles';
 
-const Section = ({name, value}: {name: string; value: string}) => (
-  <Text style={styles.text}>
-    <Text style={{fontWeight: 'bold'}}>{name}</Text>
-    <Text>: {value}</Text>
-  </Text>
+type SectionProps = {
+  name: string;
+  value: string;
+  style?: StyleProp<ViewStyle>;
+};
+
+const Section = ({name, value, style}: SectionProps) => (
+  <View style={style}>
+    <Text style={styles.text}>
+      <Text style={{fontWeight: 'bold'}}>{name}</Text>
+      <Text>: {value}</Text>
+    </Text>
+  </View>
 );
 
 export default ({mood, saved, description}: EntryViewProps) => (
   <View style={styles.outerView}>
     <View style={styles.topView}>
-      <Section name={'Mood'} value={mood} />
-      <Section name={'Saved'} value={getDateTimeString(new Date(saved))} />
+      <Section style={{flex: 2}} name={'Mood'} value={mood} />
+      <Section
+        style={{flex: 3}}
+        name={'Saved'}
+        value={getDateTimeString(new Date(saved))}
+      />
     </View>
     <Text style={styles.text}>{description}</Text>
   </View>

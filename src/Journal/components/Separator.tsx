@@ -1,7 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
+import { EntryFolderStyles } from '../styles';
 
-export default () => (
+export const ItemSeparator = () => (
   <View
     style={{
       borderBottomWidth: 1,
@@ -10,3 +11,7 @@ export default () => (
     }}
   />
 );
+
+export const SectionSeparator = () => (
+    <View style={EntryFolderStyles.folderList} />
+  );

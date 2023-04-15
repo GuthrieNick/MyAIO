@@ -1,16 +1,12 @@
 import React, {ComponentType} from 'react';
 import {Text, View, SectionList} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {
-  EntryFolderOverride,
-  FolderListSeparator,
-} from '../components/EntryFolder';
+import {EntryFolderOverride} from '../components/EntryFolder';
 import {EntryViewProps, Screens} from '../types';
 import {EntryFolderStyles as efStyles, MainStyles as mStyles} from '../styles';
 import {mockData} from '../assets/mockData';
-import {EntryView} from '../components';
+import {EntryView, ItemSeparator, SectionSeparator} from '../components';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import Separator from '../components/Separator';
 
 type SectionDatum = {
   title: string;
@@ -27,7 +23,7 @@ export default ({navigation}: {navigation: any}) => {
       title: 'Notes from this week',
       data: mockData,
       renderItem: ({item}: {item: EntryViewProps}) => <EntryView {...item} />,
-      ItemSeparatorComponent: Separator,
+      ItemSeparatorComponent: ItemSeparator,
       ListFooterComponent: () => <View style={{marginVertical: 10}} />,
       ListHeaderComponent: () => null,
     },
@@ -40,16 +36,22 @@ export default ({navigation}: {navigation: any}) => {
           onPress={() => onPress(item)}
         />
       ),
-      ItemSeparatorComponent: FolderListSeparator,
+      ItemSeparatorComponent: SectionSeparator,
       ListFooterComponent: () => (
-        <View style={{borderColor: 'gray', borderTopWidth: 1, borderBottomWidth: 1, marginBottom: 5}}>
+        <View
+          style={{
+            borderColor: 'gray',
+            borderTopWidth: 1,
+            borderBottomWidth: 1,
+            marginBottom: 5,
+          }}>
           <EntryFolderOverride
             text="View all"
             onPress={() => console.log('not implemented')}
           />
         </View>
       ),
-      ListHeaderComponent: FolderListSeparator
+      ListHeaderComponent: SectionSeparator,
     },
   ];
 
@@ -62,21 +64,20 @@ export default ({navigation}: {navigation: any}) => {
   return (
     <SafeAreaView>
       <SectionList
-        StickyHeaderComponent={() => null}
-        stickyHeaderHiddenOnScroll={true}
-        stickySectionHeadersEnabled={false}
         sections={data}
         renderSectionHeader={({section}) => (
           <View>
             <Text style={efStyles.title}>{section.title}</Text>
-            <section.ListHeaderComponent/>
+            <section.ListHeaderComponent />
           </View>
         )}
         renderItem={({section}) => <section.renderItem />}
-        ItemSeparatorComponent={({section}) => (
-          <section.ItemSeparatorComponent />
+        ItemSeparatorComponent={({section: {ItemSeparatorComponent}}) => (
+          <ItemSeparatorComponent />
         )}
-        renderSectionFooter={({section}) => <section.ListFooterComponent />}
+        renderSectionFooter={({section: {ListFooterComponent}}) => (
+          <ListFooterComponent />
+        )}
       />
       <TouchableOpacity onPress={() => navigation.navigate(Screens.Editor)}>
         <View style={mStyles.addButton}>
