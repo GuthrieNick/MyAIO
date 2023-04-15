@@ -33,7 +33,7 @@ export default ({navigation}: {navigation: any}) => {
         ListFooterComponent={FolderListSeparator}
         ItemSeparatorComponent={FolderListSeparator}
       />
-      <TouchableOpacity onPress={() => console.log('press')}>
+      <TouchableOpacity onPress={() => navigation.navigate(Screens.Editor)}>
         <View style={mStyles.addButton}>
           <Text style={mStyles.addButtonText}>+</Text>
         </View>
