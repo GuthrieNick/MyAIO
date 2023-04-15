@@ -1,1 +1,2 @@
-export {default as EntryView, type Props as EntryViewProps} from './EntryView';
+export {default as EntryView} from './EntryView';
+export {default as EntryListView} from './EntryListView'

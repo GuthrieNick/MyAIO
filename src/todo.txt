@@ -1,0 +1,1 @@
+Implement ThemeProvider for consistent theme colors
