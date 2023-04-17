@@ -1,13 +1,34 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
+  paper: {
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 4,
+  },
+
+  title: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 20,
+    marginBottom: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: 'gray',
+    paddingBottom: 10,
+  },
+
   textBox: {
     color: 'black',
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: 'black',
     borderRadius: 5,
     margin: 5,
   },
+
+  descArea: {
+    marginVertical: 20,
+  },
+
   descBox: {
     paddingHorizontal: 10,
   },
@@ -15,41 +36,46 @@ export default StyleSheet.create({
   moodArea: {
     display: 'flex',
     flexDirection: 'row',
+    marginVertical: 10,
   },
 
   moodPicker: {
+    width: 300,
   },
 
   titleText: {
     color: 'black',
     marginHorizontal: 10,
     fontWeight: 'bold',
-  },
-
-  customMoodBox: {
-    borderWidth: 1,
-    borderColor: 'blue',
+    fontSize: 15,
   },
 
   buttonArea: {
+    display: 'flex',
     flexDirection: 'row',
     alignSelf: 'center',
-    bottom: 50,
   },
 
   button: {
-    width: 150,
+    flex: 1,
     paddingVertical: 20,
-    alignItems: 'center',
-    borderRadius: 20,
+    marginHorizontal: 10,
+    borderRadius: 30,
     borderWidth: 1,
     borderColor: 'gray',
-    marginHorizontal: 20,
-  },
-
-  buttonText: {
+    textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 15,
+  },
+
+  buttonSave: {
+    backgroundColor: '#3B71CA',
     color: 'white',
+  },
+
+  buttonCancel: {
+    backgroundColor: 'white',
+    color: 'black',
+    textDecorationLine: 'underline',
   },
 });

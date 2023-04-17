@@ -1,30 +1,24 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {EntryListViewProps} from './EntryView.types';
+import {Entries} from './EntryView.types';
 
 export enum Screens {
   Main = 'Main',
-  Editor = 'Editor',
   WeekView = 'WeekView',
 }
 
-export type WeekViewProps = EntryListViewProps & {
+export type WeekViewProps = {
+  entries: Entries;
   weeksAgo: number;
 };
 
 export type JournalParamList = {
   Main: undefined;
-  Editor: undefined;
   WeekView: WeekViewProps;
 };
 
 export type MainScreenProps = NativeStackScreenProps<
   JournalParamList,
   Screens.Main
->;
-
-export type EditorScreenProps = NativeStackScreenProps<
-  JournalParamList,
-  Screens.Editor
 >;
 
 export type WeekViewScreenProps = NativeStackScreenProps<

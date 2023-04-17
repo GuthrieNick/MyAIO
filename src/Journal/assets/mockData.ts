@@ -1,6 +1,6 @@
-import { EntryViewProps } from "../types";
+import { Entry } from "../types";
 
-export const mockData: EntryViewProps[] = [
+export const mockData: Entry[] = [
     {
       mood: 'happy',
       saved: new Date(Date.now() - 1000 * 60 * 60 * 24 * 5).getTime(),

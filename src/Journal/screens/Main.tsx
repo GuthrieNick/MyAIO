@@ -1,13 +1,18 @@
-import React, {ComponentType} from 'react';
-import {Text, View, SectionList} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import React, {ComponentType, useState} from 'react';
+import {
+  Text,
+  View,
+  SectionList,
+  TouchableNativeFeedback as Touchable,
+} from 'react-native';
 import {EntryFolderOverride} from '../components/EntryFolder';
-import {EntryViewProps, MainScreenProps, Screens} from '../types';
+import {Entry, MainScreenProps, Screens} from '../types';
 import {EntryFolderStyles as efStyles, MainStyles as mStyles} from '../styles';
 import {mockData} from '../assets/mockData';
 import {EntryView, ItemSeparator, SectionSeparator} from '../components';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import ActionButton from 'react-native-action-button';
+import {EditorPopup} from '../components';
+import Modal from 'react-native-modal';
 
 type SectionDatum = {
   title: string;
@@ -19,11 +24,13 @@ type SectionDatum = {
 };
 
 export default ({navigation}: MainScreenProps) => {
+  const [modalVisible, setModalVisible] = useState(true);
+
   const sectionData: SectionDatum[] = [
     {
       title: 'Notes from this week',
       data: mockData,
-      renderItem: ({item}: {item: EntryViewProps}) => <EntryView {...item} />,
+      renderItem: ({item}: {item: Entry}) => <EntryView {...item} />,
       ItemSeparatorComponent: ItemSeparator,
       ListFooterComponent: () => <View style={{marginVertical: 10}} />,
       ListHeaderComponent: () => null,
@@ -63,7 +70,7 @@ export default ({navigation}: MainScreenProps) => {
     });
 
   return (
-    <View>
+    <View style={{flex: 1}}>
       <SectionList
         sections={sectionData}
         renderSectionHeader={({section}) => (
@@ -80,7 +87,17 @@ export default ({navigation}: MainScreenProps) => {
           <ListFooterComponent />
         )}
       />
-      <ActionButton onPress={() => navigation.navigate('Editor')} />
+      <ActionButton onPress={() => setModalVisible(true)} />
+      <Modal
+        isVisible={modalVisible}
+        style={{
+          justifyContent: 'flex-end',
+          margin: 0,
+        }}>
+        <View>
+          <EditorPopup onHide={() => setModalVisible(false)} />
+        </View>
+      </Modal>
     </View>
   );
 };

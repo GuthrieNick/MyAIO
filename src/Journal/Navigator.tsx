@@ -1,6 +1,6 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {EditorScreen, MainScreen, WeekViewScreen} from './screens';
+import {MainScreen, WeekViewScreen} from './screens';
 import {Screens} from './types';
 
 const Stack = createNativeStackNavigator();
@@ -15,6 +15,5 @@ export default () => (
       component={WeekViewScreen}
       options={{animation: 'slide_from_right'}}
     />
-    <Stack.Screen name={Screens.Editor} component={EditorScreen} />
   </Stack.Navigator>
 );

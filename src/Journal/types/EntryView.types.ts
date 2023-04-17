@@ -1,9 +1,7 @@
-export type EntryViewProps = {
+export type Entry = {
   mood: string;
   saved: number;
   description: string;
 };
 
-export type EntryListViewProps = {
-  entries: readonly EntryViewProps[];
-};
+export type Entries = Entry[];

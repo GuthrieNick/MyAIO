@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleProp, ViewStyle} from 'react-native';
 import {getDateTimeString} from '../../utils';
-import {EntryViewProps} from '../types';
+import {Entry} from '../types';
 import {EntryViewStyles as styles} from '../styles';
 
 type SectionProps = {
@@ -19,7 +19,7 @@ const Section = ({name, value, style}: SectionProps) => (
   </View>
 );
 
-export default ({mood, saved, description}: EntryViewProps) => (
+export default ({mood, saved, description}: Entry) => (
   <View style={styles.outerView}>
     <View style={styles.topView}>
       <Section style={{flex: 2}} name={'Mood'} value={mood} />

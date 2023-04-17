@@ -3,8 +3,6 @@ import {View, Text} from 'react-native';
 import {EntryListView, EntryView} from '../components';
 import {WeekViewScreenProps} from '../types/screens.types';
 import {EntryFolderStyles as styles} from '../styles';
-import {FlatList} from 'react-native-gesture-handler';
-import {ItemSeparator} from '../components/Separator';
 
 export default ({route}: WeekViewScreenProps) => {
   const {weeksAgo, entries} = route.params;
