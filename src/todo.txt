@@ -1,2 +1,4 @@
 Implement ThemeProvider for consistent theme colors
 Add Editor and AsyncStorage to Journal
+Settings app for theme picker
+Add redux with AsyncStorage side effect

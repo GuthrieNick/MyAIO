@@ -14,7 +14,7 @@ const monthNames = [
 ];
 
 export const getDateString = (date: Date): string =>
-  `${monthNames[date.getMonth()]} ${date.getDay()}`;
+  `${monthNames[date.getMonth()]} ${date.getDate()}`;
 
 export const getDateTimeString = (date: Date): string =>
   getDateString(date) + ', ' + date.toLocaleTimeString();

@@ -2,11 +2,12 @@ import React, {ComponentType} from 'react';
 import {Text, View, SectionList} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {EntryFolderOverride} from '../components/EntryFolder';
-import {EntryViewProps, Screens} from '../types';
+import {EntryViewProps, MainScreenProps, Screens} from '../types';
 import {EntryFolderStyles as efStyles, MainStyles as mStyles} from '../styles';
 import {mockData} from '../assets/mockData';
 import {EntryView, ItemSeparator, SectionSeparator} from '../components';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import ActionButton from 'react-native-action-button';
 
 type SectionDatum = {
   title: string;
@@ -17,8 +18,8 @@ type SectionDatum = {
   ListFooterComponent: ComponentType<any>;
 };
 
-export default ({navigation}: {navigation: any}) => {
-  const data: SectionDatum[] = [
+export default ({navigation}: MainScreenProps) => {
+  const sectionData: SectionDatum[] = [
     {
       title: 'Notes from this week',
       data: mockData,
@@ -62,9 +63,9 @@ export default ({navigation}: {navigation: any}) => {
     });
 
   return (
-    <SafeAreaView>
+    <View>
       <SectionList
-        sections={data}
+        sections={sectionData}
         renderSectionHeader={({section}) => (
           <View>
             <Text style={efStyles.title}>{section.title}</Text>
@@ -79,11 +80,7 @@ export default ({navigation}: {navigation: any}) => {
           <ListFooterComponent />
         )}
       />
-      <TouchableOpacity onPress={() => navigation.navigate(Screens.Editor)}>
-        <View style={mStyles.addButton}>
-          <Text style={mStyles.addButtonText}>+</Text>
-        </View>
-      </TouchableOpacity>
-    </SafeAreaView>
+      <ActionButton onPress={() => navigation.navigate('Editor')} />
+    </View>
   );
 };
